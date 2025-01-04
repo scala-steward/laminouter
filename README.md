@@ -53,16 +53,14 @@ The usage is extremely simple.
 5. Get a signal of the current route and do something with it:
     ```scala
     div(
-        child <-- router
-          .routeWithFallback(Route.Home)
-          .splitOne(_.ordinal): (_, init, sig) =>
-            init match
-              case Route.Home        => renderHome()
-              case _: Route.Category => renderCategory(sig.asInstanceOf)
-              case _: Route.BlogPost => renderBlogPost(sig.asInstanceOf)
+        child <-- router.routeWithFallback(Route.Home).splitMatchOne
+          .handleType[Route.Home.type]((_, _) => renderHome()
+          .handleType[Route.Category]((_, sig) => renderCategory(sig)
+          .handleType[Route.BlogPost]((_, sig) => renderBlogPost(sig)
+          .toSignal
     )
     ```
-    If you find the `asInstanceOf` ugly, take a look at the [notes](#how-to-get-rid-of-the-asinstanceof).
+    This only **works with Laminar 17.2.0** and above. For older versions, see the [old way](#switch-with-asinstanceof).
 
 6. Create buttons or links using the router:
     ```scala
@@ -85,12 +83,18 @@ That said, to keep things simple, we had to make some serious concessions. If th
 Still here? Welcome to the I-Just-Dont-Care-Club then!
 
 ## Notes
-### How to get rid of the `asInstanceOf`?
-Laminouter only gives you a signal of the current route. That's by design. At the time of this writing, Laminar doesn't have a way to destructure an enum in a typesafe way. But it will. As soon as [116](https://github.com/raquo/Airstream/pull/116) is merged, we will be able to do it just fine.
+### Switch with `asInstanceOf`
 
-Until then, you can either copy the code from the PR, or copy good-enough solution from my gist [here](https://gist.github.com/felher/5515eb1124268b0e10eadc78778f49a8).
-
-Or, of course, you can switch to, for example, [Waypoint](https://github.com/raquo/Waypoint), which does include a `SplitRender` abstraction which lets you do this, albeit without exhaustivity checking.
+If you are not on laminar 17.2.0 yet, you need to use `asInstanceOf` like this:
+```scala
+child <-- router
+  .routeWithFallback(Route.Home)
+  .splitOne(_.ordinal): (_, init, sig) =>
+    init match
+      case Route.Home        => renderHome()
+      case _: Route.Category => renderCategory(sig.asInstanceOf)
+      case _: Route.BlogPost => renderBlogPost(sig.asInstanceOf)
+```
 
 ### What's up with the multiple parameter lists?
 
