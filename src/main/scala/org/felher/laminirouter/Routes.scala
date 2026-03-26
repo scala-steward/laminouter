@@ -278,10 +278,7 @@ object Routes:
                 val codecs = $codecsExpr
 
                 value.map: value =>
-                  val encoded = scalajs.js.URIUtils.encodeURIComponent(codecs(${
-                    Expr(i)
-                  }).asInstanceOf[Codec[t]].encode(value.asInstanceOf[t]))
-
+                  val encoded = codecs(${ Expr(i) }).asInstanceOf[Codec[t]].encode(value.asInstanceOf[t])
                   ${ Expr(vd.name) } -> encoded
               }
             case '[t]         =>
@@ -289,10 +286,7 @@ object Routes:
                 val value  = $select
                 val codecs = $codecsExpr
 
-                val encoded = scalajs.js.URIUtils.encodeURIComponent(codecs(${
-                  Expr(i)
-                }).asInstanceOf[Codec[t]].encode(value.asInstanceOf[t]))
-
+                val encoded = codecs(${ Expr(i) }).asInstanceOf[Codec[t]].encode(value.asInstanceOf[t])
                 Some(${ Expr(vd.name) } -> encoded)
               }
 
@@ -330,7 +324,6 @@ object Routes:
 
     checkAndStripPrefix(url.pathname)
       .flatMap(getSegments)
-      .flatMap(uriDecode)
       .flatMap(uriDecode)
 
   extension (s: String)
