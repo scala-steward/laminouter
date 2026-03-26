@@ -1,6 +1,6 @@
 ThisBuild / organization         := "org.felher"
 ThisBuild / organizationName     := "Felix Herrmann"
-ThisBuild / version              := "0.17.1"
+ThisBuild / version              := "0.17.2"
 ThisBuild / organizationHomepage := Some(url("https://felher.org"))
 ThisBuild / scalaVersion         := "3.3.4"
 
@@ -33,7 +33,7 @@ lazy val root = project
     name                   := "laminouter",
     usePgpKeyHex("DE132E3B66E5239F490F52AB3DA07E9E7CFDB415"),
     Test / publishArtifact := true,
-    mimaPreviousArtifacts  := Set("org.felher" %%% "laminouter" % "0.17.0"),
+    mimaPreviousArtifacts  := Set("org.felher" %%% "laminouter" % "0.17.1"),
     scalacOptions ++= Seq(
       "-language:strictEquality",
       "-feature",
@@ -60,8 +60,8 @@ lazy val testMatrix = project
   .settings(
     libraryDependencies ++= Seq(
       "com.raquo"   %%% "laminar"    % "17.2.0",
-      "org.felher"  %%% "laminouter" % "0.17.1",
-      "org.felher"  %%% "laminouter" % "0.17.1" % Test classifier "tests",
+      "org.felher"  %%% "laminouter" % "0.17.2",
+      "org.felher"  %%% "laminouter" % "0.17.2" % Test classifier "tests",
       "com.lihaoyi" %%% "utest"      % "0.8.4"  % Test
     ),
     jsEnv := new org.scalajs.jsenv.jsdomnodejs.JSDOMNodeJSEnv(),
@@ -74,7 +74,7 @@ lazy val testMatrix = project
       )
 
       val laminarVersions    = List("0.14.5", "15.0.1", "16.0.0", "17.0.0", "17.1.0", "17.2.0")
-      val laminouterVersions = List("0.17.0", "0.17.1")
+      val laminouterVersions = List("0.17.0", "0.17.1", "0.17.2")
       val scalaVersions      = List("3.3.4")
       val allTestKeys        = for {
         scalaVersion      <- scalaVersions
