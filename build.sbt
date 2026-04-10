@@ -59,7 +59,7 @@ lazy val testMatrix = project
   .enablePlugins(ScalaJSPlugin)
   .settings(
     libraryDependencies ++= Seq(
-      "com.raquo"   %%% "laminar"    % "17.2.0",
+      "com.raquo"   %%% "laminar"    % "17.2.1",
       "org.felher"  %%% "laminouter" % "0.17.2",
       "org.felher"  %%% "laminouter" % "0.17.2" % Test classifier "tests",
       "com.lihaoyi" %%% "utest"      % "0.8.4"  % Test
@@ -73,7 +73,7 @@ lazy val testMatrix = project
           laminouterVersion: String
       )
 
-      val laminarVersions    = List("0.14.5", "15.0.1", "16.0.0", "17.0.0", "17.1.0", "17.2.0")
+      val laminarVersions    = List("0.14.5", "15.0.1", "16.0.0", "17.0.0", "17.1.0", "17.2.0", "17.2.1")
       val laminouterVersions = List("0.17.0", "0.17.1", "0.17.2")
       val scalaVersions      = List("3.3.4")
       val allTestKeys        = for {

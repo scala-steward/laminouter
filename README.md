@@ -137,14 +137,15 @@ Laminouter doesn't list Laminar as normal dependency, but as "provided", so that
 
 We generate a compatibility matrix for all releases, which lists the Laminar versions as well as the Scala versions the library is binary compatible with. Here it is:
 
-||Laminouter 0.17.0|Laminouter 0.17.1|
-|-|-|-|
-| Laminar 0.14.5 | scala 3.3|scala 3.3 |
-| Laminar 15.0.1 | scala 3.3|scala 3.3 |
-| Laminar 16.0.0 | scala 3.3|scala 3.3 |
-| Laminar 17.0.0 | scala 3.3|scala 3.3 |
-| Laminar 17.1.0 | scala 3.3|scala 3.3 |
-| Laminar 17.2.0 | scala 3.3|scala 3.3 |
+||Laminouter 0.17.0|Laminouter 0.17.1|Laminouter 0.17.2|
+|-|-|-|-|
+| Laminar 0.14.5 | scala 3.3|scala 3.3|scala 3.3 |
+| Laminar 15.0.1 | scala 3.3|scala 3.3|scala 3.3 |
+| Laminar 16.0.0 | scala 3.3|scala 3.3|scala 3.3 |
+| Laminar 17.0.0 | scala 3.3|scala 3.3|scala 3.3 |
+| Laminar 17.1.0 | scala 3.3|scala 3.3|scala 3.3 |
+| Laminar 17.2.0 | scala 3.3|scala 3.3|scala 3.3 |
+| Laminar 17.2.1 | scala 3.3|scala 3.3|scala 3.3 |
 
 ## Contributions, Design Goals and Extensions
 
